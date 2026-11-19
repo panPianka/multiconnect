@@ -1,0 +1,23 @@
+# MultiConnect commander config. Copy to commander.yaml (setup.bat does it for you).
+team_token: change-me            # shared secret; every worker and the panel need it
+host: 0.0.0.0
+port: 8765                       # panel + API: http://<this-pc>:8765/
+discovery_port: 8766             # UDP beacon so workers find the commander automatically
+
+game_dir: F:/hackathon-game      # the Godot game - keep it OUTSIDE this repo
+backup_dir: F:/hackathon-backups
+backup_every_min: 10
+backup_keep: 30
+mirror_backups_to: []            # [] = one other PC automatically; or worker names, e.g. [PC-02]
+hive_backup_every_min: 10        # DB + logins + config zip (hive-*.zip) to move the commander; 0 = off
+mirror_hive: true                # also copy hive-*.zip to the mirror PC (it contains login cookies)
+
+godot_path: ""                   # empty = auto-detect (.godot_bin\, PATH, GODOT env)
+default_agents_per_host: 6       # change live with +/- in the panel
+max_rounds: 10                   # message rounds per chat before giving up
+question_timeout_s: 600          # agent @@ASK waits this long for Claude
+heartbeat_timeout_s: 20
+task_timeout_min: 25
+context_rollover_ratio: 0.7      # start a fresh chat when the estimated context is 70% full
+disabled_providers: []           # or toggle in the panel
+accounts_file: config/accounts.yaml

@@ -1,0 +1,20 @@
+# Local fake chat for testing: run `multiconnect mockchat`, then add accounts with provider: mock
+name: MockChat (testing)
+enabled: true
+context_tokens: 32000
+home_url: http://127.0.0.1:8790/
+new_chat_url: http://127.0.0.1:8790/new
+login_url: http://127.0.0.1:8790/login
+selectors:
+  input: "textarea#prompt"
+  send_button: "button#send"
+  stop_button: "button#stop"
+  assistant_message: ".msg.assistant"
+  code_block: "pre"
+  logged_in: "textarea#prompt"
+  login_required: "#login-form"
+send_with: enter
+url_login_patterns: ["/login"]
+settle_ms: 1200
+cooldown_min: 1
+block_url_patterns: []

@@ -1,0 +1,22 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  pytest:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Install
+        run: uv sync --frozen --extra dev --python 3.12
+      - name: Compile all modules
+        run: uv run python -m compileall -q multiconnect
+      - name: Tests
+        run: uv run pytest -q
+      - name: Panel JS syntax
+        run: node --check multiconnect/coordinator/panel/app.js

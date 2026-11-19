@@ -1,0 +1,18 @@
+# Chat accounts. NO PASSWORDS here - each account logs in once by hand in a small
+# browser window (panel: Agents > Login, or login.bat <id>). The login cookies are
+# stored in state/secrets/ on the commander and never committed.
+#
+# id:        unique, short (used in folder names)
+# provider:  file name in config/providers/ (chatgpt, deepseek, gemini, mistral, qwen, claude, ...)
+# owner:     whose account (shown in the panel)
+# pin_host:  optional - always run this account on that computer
+accounts:
+  - {id: anna-gpt,    provider: chatgpt,  owner: Anna,  label: anna@example.com}
+  - {id: anna-ds,     provider: deepseek, owner: Anna}
+  - {id: anna-gem,    provider: gemini,   owner: Anna}
+  - {id: bartek-gpt,  provider: chatgpt,  owner: Bartek}
+  - {id: bartek-ds,   provider: deepseek, owner: Bartek}
+  - {id: bartek-qwen, provider: qwen,     owner: Bartek}
+  # testing without real accounts (run mockchat first):
+  # - {id: mock1, provider: mock, owner: test}
+  # - {id: mock2, provider: mock, owner: test}

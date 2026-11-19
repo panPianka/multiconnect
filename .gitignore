@@ -1,0 +1,23 @@
+# runtime data - NEVER commit (contains login cookies)
+state/
+agents/
+mirror_backups/
+config/commander.yaml
+config/worker.yaml
+config/accounts.yaml
+codex_mcp_snippet.toml
+
+# portable toolchain (big)
+.venv/
+.tools/
+.browsers/
+.godot_bin/
+offline/
+
+__pycache__/
+*.pyc
+.pytest_cache/
+*.log
+
+# release builds
+dist/

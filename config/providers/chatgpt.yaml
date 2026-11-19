@@ -1,0 +1,20 @@
+# ChatGPT (chatgpt.com). Selectors are best guesses - fix them live in the panel (Providers > Test selector).
+name: ChatGPT
+enabled: true
+context_tokens: 32000
+home_url: https://chatgpt.com/
+new_chat_url: https://chatgpt.com/
+login_url: https://chatgpt.com/auth/login
+selectors:
+  input: "#prompt-textarea"
+  send_button: "button[data-testid='send-button'], #composer-submit-button"
+  stop_button: "button[data-testid='stop-button']"
+  assistant_message: "[data-message-author-role='assistant']"
+  code_block: "pre"
+  logged_in: "#prompt-textarea"
+  login_required: "button[data-testid='login-button']"
+send_with: enter
+input_mode: auto
+url_login_patterns: ["/auth/", "auth.openai.com", "/login"]
+rate_limit_patterns: ["you've reached", "usage limit", "limit for gpt", "too many requests", "try again later", "reached our limit"]
+notes: "Free tier falls back to a smaller model after the limit; still usable."

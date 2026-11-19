@@ -1,0 +1,16 @@
+name: Grok
+enabled: false
+context_tokens: 64000
+home_url: https://grok.com/
+new_chat_url: https://grok.com/
+login_url: https://accounts.x.ai/sign-in
+selectors:
+  input: "textarea, div[contenteditable='true']"
+  send_button: "button[type='submit']"
+  stop_button: "button[aria-label*='Stop']"
+  assistant_message: "div.message-bubble:not(.bg-surface-l1), [class*='response-content']"
+  code_block: "pre"
+  logged_in: "textarea"
+  login_required: "a[href*='sign-in']"
+send_with: enter
+url_login_patterns: ["accounts.x.ai", "sign-in"]

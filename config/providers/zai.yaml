@@ -1,0 +1,16 @@
+name: Z.ai (GLM)
+enabled: false
+context_tokens: 64000
+home_url: https://chat.z.ai/
+new_chat_url: https://chat.z.ai/
+login_url: https://chat.z.ai/auth
+selectors:
+  input: "textarea#chat-input, textarea"
+  send_button: "button#send-message-button, button[type='submit']"
+  stop_button: "button[aria-label*='Stop']"
+  assistant_message: ".chat-assistant, .markdown-prose"
+  code_block: "pre"
+  logged_in: "textarea"
+  login_required: "input[type='password']"
+send_with: enter
+url_login_patterns: ["/auth"]

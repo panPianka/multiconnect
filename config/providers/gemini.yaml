@@ -1,0 +1,18 @@
+name: Gemini
+enabled: true
+context_tokens: 100000
+home_url: https://gemini.google.com/app
+new_chat_url: https://gemini.google.com/app
+login_url: https://accounts.google.com/ServiceLogin?continue=https://gemini.google.com/app
+selectors:
+  input: "rich-textarea .ql-editor, div.ql-editor[contenteditable='true']"
+  send_button: "button.send-button, button[aria-label*='Send']"
+  stop_button: "button[aria-label*='Stop']"
+  assistant_message: "message-content"
+  code_block: "code-block pre, pre"
+  logged_in: "rich-textarea"
+  login_required: "a[href*='ServiceLogin']"
+send_with: enter
+input_mode: paste
+url_login_patterns: ["accounts.google.com", "ServiceLogin"]
+rate_limit_patterns: ["you've reached your limit", "usage limit", "try again later", "too many requests"]

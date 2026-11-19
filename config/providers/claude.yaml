@@ -1,0 +1,19 @@
+name: Claude.ai (free)
+enabled: false
+context_tokens: 100000
+home_url: https://claude.ai/new
+new_chat_url: https://claude.ai/new
+login_url: https://claude.ai/login
+selectors:
+  input: "div.ProseMirror[contenteditable='true']"
+  send_button: "button[aria-label='Send message'], button[aria-label*='Send']"
+  stop_button: "button[aria-label*='Stop']"
+  assistant_message: ".font-claude-response, [data-is-streaming]"
+  code_block: "pre"
+  logged_in: "div.ProseMirror"
+  login_required: "input[type='email']"
+send_with: enter
+input_mode: paste
+url_login_patterns: ["/login", "/magic-link"]
+rate_limit_patterns: ["message limit", "out of free messages", "usage limit", "try again later"]
+notes: "Free tier has few messages; use for hard tasks only."

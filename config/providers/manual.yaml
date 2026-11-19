@@ -1,0 +1,27 @@
+# PLAN B - manual relay ("you are the browser").
+# Use when automation of a chat site breaks (new layout, captcha loops, blocked) or for any AI
+# that has no provider file. The agent's page waits for a human, who copies each message into
+# ANY chat in a normal browser and pastes the answer back at http://127.0.0.1:8790/manual/inbox
+# (on the PC where the worker runs this agent). Everything else (sandbox, Godot check, reports)
+# works exactly as with automated agents.
+# Accounts: add e.g. `- {id: manual1, provider: manual, owner: kuba}` to accounts.yaml - no login needed.
+# Pin them to the PC where the human sits: `pin_host: PC-NAME` in accounts.yaml (or in the panel).
+name: Manual relay (human copy-paste)
+enabled: false            # switch on in the panel when you need it
+no_login: true
+context_tokens: 32000
+home_url: http://127.0.0.1:8790/manual/new
+new_chat_url: http://127.0.0.1:8790/manual/new
+selectors:
+  input: "textarea#prompt"
+  send_button: "button#send"
+  stop_button: "button#stop"
+  assistant_message: ".msg.assistant"
+  code_block: "pre"
+  logged_in: "textarea#prompt"
+  login_required: "#never-shown"
+send_with: button
+settle_ms: 1500
+reply_timeout_s: 3600     # a human may need a while
+cooldown_min: 1
+block_url_patterns: []

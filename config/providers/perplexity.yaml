@@ -1,0 +1,16 @@
+name: Perplexity
+enabled: false
+context_tokens: 32000
+home_url: https://www.perplexity.ai/
+new_chat_url: https://www.perplexity.ai/
+login_url: https://www.perplexity.ai/
+selectors:
+  input: "textarea, div#ask-input[contenteditable='true']"
+  send_button: "button[aria-label='Submit'], button[data-testid='submit-button']"
+  stop_button: "button[aria-label*='Stop']"
+  assistant_message: "div.prose"
+  code_block: "pre"
+  logged_in: "textarea, #ask-input"
+  login_required: ""
+send_with: enter
+notes: "Search-oriented; weak for long code. Disabled by default."

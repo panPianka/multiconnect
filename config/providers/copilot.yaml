@@ -1,0 +1,16 @@
+name: Microsoft Copilot
+enabled: false
+context_tokens: 32000
+home_url: https://copilot.microsoft.com/
+new_chat_url: https://copilot.microsoft.com/
+login_url: https://copilot.microsoft.com/
+selectors:
+  input: "textarea#userInput, textarea"
+  send_button: "button[aria-label*='Submit'], button[title*='Submit']"
+  stop_button: "button[aria-label*='Stop']"
+  assistant_message: "[data-content='ai-message']"
+  code_block: "pre"
+  logged_in: "textarea"
+  login_required: ""
+send_with: enter
+url_login_patterns: ["login.live.com", "login.microsoftonline"]

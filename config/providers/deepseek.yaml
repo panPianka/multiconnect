@@ -1,0 +1,20 @@
+name: DeepSeek
+enabled: true
+context_tokens: 64000
+home_url: https://chat.deepseek.com/
+new_chat_url: https://chat.deepseek.com/
+login_url: https://chat.deepseek.com/sign_in
+selectors:
+  input: "textarea#chat-input, textarea"
+  send_button: "div[role='button'][aria-disabled='false']:has(svg)"
+  stop_button: "div[role='button']:has(rect), [class*='stop']"
+  assistant_message: ".ds-markdown"
+  code_block: "pre"
+  logged_in: "textarea"
+  login_required: "input[type='password']"
+send_with: enter
+url_login_patterns: ["sign_in", "/login"]
+rate_limit_patterns: ["server is busy", "too many requests", "try again later", "rate limit"]
+settle_ms: 3500
+cooldown_min: 5
+notes: "'Server is busy' happens at peak hours - cooldown is short."

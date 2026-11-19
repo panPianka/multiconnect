@@ -1,0 +1,39 @@
+name: release
+
+# Push a tag like v0.1.0 -> tests run, then a GitHub release with the source zip is created.
+# The big offline zip is uploaded from a PC with make_release.bat --publish (it adds to the same release).
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+      - name: Tests
+        run: |
+          uv sync --frozen --extra dev --python 3.12
+          uv run pytest -q
+      - name: Source zip
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          git archive --format=zip --prefix=multiconnect/ -o "dist/multiconnect-${{ github.ref_name }}-source.zip" HEAD
+      - name: Create or update release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $zip = "dist/multiconnect-$tag-source.zip"
+          gh release view $tag 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            gh release upload $tag $zip --clobber
+          } else {
+            gh release create $tag $zip --title "MultiConnect $tag" --generate-notes
+          }

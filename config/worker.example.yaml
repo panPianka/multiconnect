@@ -1,0 +1,13 @@
+# MultiConnect worker config (every PC that runs agents). Copy to worker.yaml.
+name: ""                         # empty = Windows computer name
+coordinator_url: ""              # empty = auto-discover on the LAN; or http://192.168.1.10:8765
+team_token: change-me
+discovery_port: 8766
+godot_path: ""                   # empty = auto-detect
+max_parallel_godot: 0            # 0 = half the CPU cores
+browser_mode: mini               # mini (small windows) | hidden (minimized) | headless
+browser_channel: chromium        # chromium (bundled) | msedge (preinstalled Edge, no download) | chrome
+window_size: [480, 640]
+idle_close_page_s: 180           # close idle tabs to save RAM (login is kept)
+poll_interval_s: 1.0
+reply_timeout_s: 420

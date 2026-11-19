@@ -1,0 +1,16 @@
+name: Kimi
+enabled: false
+context_tokens: 100000
+home_url: https://www.kimi.com/
+new_chat_url: https://www.kimi.com/
+login_url: https://www.kimi.com/
+selectors:
+  input: "div.chat-input-editor[contenteditable='true'], div[contenteditable='true']"
+  send_button: "div.send-button, button[class*='send']"
+  stop_button: "[class*='stop']"
+  assistant_message: ".segment-assistant .markdown, .chat-content-item-assistant .markdown"
+  code_block: "pre"
+  logged_in: "div[contenteditable='true']"
+  login_required: ""
+send_with: enter
+input_mode: paste

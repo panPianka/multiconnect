@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MultiConnect</title>
+<link rel="stylesheet" href="/panel/style.css">
+</head>
+<body>
+<div id="login" class="login hidden">
+  <form id="login-form" class="card">
+    <h1>MultiConnect</h1>
+    <p data-i18n="login.hint">Enter the team token (config/commander.yaml)</p>
+    <input id="login-token" type="password" autocomplete="current-password" placeholder="team token">
+    <button type="submit" class="btn primary" data-i18n="login.go">Open panel</button>
+    <p id="login-err" class="err"></p>
+  </form>
+</div>
+
+<div id="app" class="hidden">
+  <header>
+    <div class="brand">Multi<b>Connect</b></div>
+    <div id="chips" class="chips"></div>
+    <div class="hdr-actions">
+      <button id="btn-pause" class="btn" data-i18n="hdr.pause">Pause all</button>
+      <button id="btn-sound" class="btn icon" title="sound">🔔</button>
+      <button id="btn-theme" class="btn icon" title="theme">🌓</button>
+      <button id="btn-lang" class="btn icon">PL</button>
+    </div>
+  </header>
+
+  <div id="banner" class="banner hidden"></div>
+
+  <nav id="tabs">
+    <button data-tab="overview" class="active" data-i18n="tab.overview">Overview</button>
+    <button data-tab="tasks" data-i18n="tab.tasks">Tasks</button>
+    <button data-tab="assets" data-i18n="tab.assets">Assets</button>
+    <button data-tab="tokens" data-i18n="tab.tokens">Tokens</button>
+    <button data-tab="providers" data-i18n="tab.providers">Providers</button>
+    <button data-tab="game" data-i18n="tab.game">Game &amp; backups</button>
+    <button data-tab="events" data-i18n="tab.events">Events</button>
+    <button data-tab="help" data-i18n="tab.help">Help</button>
+  </nav>
+
+  <main>
+    <section id="tab-overview" class="tab">
+      <div class="row2">
+        <div class="card grow">
+          <h2 data-i18n="claude.title">Claude (commander)</h2>
+          <div id="claude-box"></div>
+          <form id="msg-claude" class="inline">
+            <input id="msg-claude-text" data-i18n-ph="claude.ph" placeholder="Message to Claude...">
+            <button class="btn" data-i18n="claude.send">Send</button>
+          </form>
+        </div>
+        <div class="card grow">
+          <h2 data-i18n="q.title">Open questions</h2>
+          <div id="questions"></div>
+        </div>
+      </div>
+      <h2 class="sect" data-i18n="hosts.title">Computers</h2>
+      <div id="hosts" class="hosts"></div>
+      <h2 class="sect"><span data-i18n="agents.title">Agents</span>
+        <select id="agent-filter">
+          <option value="" data-i18n="f.all">all</option>
+          <option value="working" data-i18n="st.working">working</option>
+          <option value="idle" data-i18n="st.idle">idle</option>
+          <option value="problem" data-i18n="f.problem">problems</option>
+          <option value="offline" data-i18n="st.offline">offline</option>
+        </select>
+        <button id="btn-reload-acc" class="btn sm" data-i18n="agents.reload">Reload accounts</button>
+      </h2>
+      <div id="agents" class="agents"></div>
+    </section>
+
+    <section id="tab-tasks" class="tab hidden">
+      <div class="actions card">
+        <button class="btn" id="btn-new-task" data-i18n="nt.new">+ New task</button>
+        <button class="btn" id="btn-contract" data-i18n="nt.contract">Contract</button>
+        <button class="btn" id="btn-check-game" data-i18n="nt.check">Check whole game</button>
+        <span class="muted" data-i18n="nt.hint">Works without Claude: you can plan, dispatch and integrate by hand.</span>
+      </div>
+      <div id="task-graph" class="card graph"></div>
+      <div id="kanban" class="kanban"></div>
+    </section>
+
+    <section id="tab-assets" class="tab hidden">
+      <div id="dropzone" class="card dropzone" data-i18n="assets.drop">Drop finished asset files here (name them like the requested path)</div>
+      <div id="assets" class="assets"></div>
+    </section>
+
+    <section id="tab-tokens" class="tab hidden">
+      <div class="row2">
+        <div class="card grow"><h2 data-i18n="tok.rate">Tokens per minute (2h)</h2><div id="tok-chart"></div></div>
+        <div class="card"><h2 data-i18n="tok.totals">Totals</h2><div id="tok-totals"></div></div>
+      </div>
+      <div class="row2">
+        <div class="card grow"><h2 data-i18n="tok.agents">Per agent</h2><div id="tok-agents"></div></div>
+        <div class="card grow"><h2 data-i18n="tok.providers">Per provider / computer</h2><div id="tok-prov"></div></div>
+      </div>
+    </section>
+
+    <section id="tab-providers" class="tab hidden">
+      <div class="card">
+        <h2 data-i18n="sel.title">Selector tester</h2>
+        <p class="muted" data-i18n="sel.hint">Pick a running agent, type a CSS selector and highlight it in that agent's window.</p>
+        <form id="sel-form" class="inline wrap">
+          <select id="sel-agent"></select>
+          <input id="sel-input" placeholder="CSS selector, e.g. textarea" class="grow">
+          <button class="btn" data-i18n="sel.test">Highlight</button>
+          <button type="button" id="sel-shot" class="btn" data-i18n="sel.shot">Screenshot</button>
+        </form>
+        <pre id="sel-out" class="out"></pre>
+      </div>
+      <div id="providers" class="providers"></div>
+    </section>
+
+    <section id="tab-game" class="tab hidden">
+      <div class="row2">
+        <div class="card grow">
+          <h2 data-i18n="game.title">Game</h2>
+          <div id="game-info"></div>
+          <div class="inline">
+            <button id="btn-check" class="btn" data-i18n="game.check">Godot check</button>
+            <button id="btn-tree" class="btn" data-i18n="game.tree">File tree</button>
+          </div>
+          <pre id="game-out" class="out"></pre>
+        </div>
+        <div class="card grow">
+          <h2 data-i18n="bk.title">Backups</h2>
+          <button id="btn-backup" class="btn primary" data-i18n="bk.now">Backup now</button>
+          <a class="btn" id="btn-diag" href="#" data-i18n="bk.diag">Download diagnostics</a>
+          <div id="backups"></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-events" class="tab hidden">
+      <form id="ev-form" class="inline wrap card">
+        <select id="ev-level">
+          <option value="">all</option><option value="error">error</option><option value="warn">warn</option><option value="info">info</option>
+        </select>
+        <input id="ev-q" class="grow" data-i18n-ph="ev.search" placeholder="search...">
+        <input id="ev-agent" data-i18n-ph="ev.agent" placeholder="agent">
+        <input id="ev-task" data-i18n-ph="ev.task" placeholder="task">
+        <button class="btn" data-i18n="ev.go">Filter</button>
+      </form>
+      <div id="events" class="events"></div>
+    </section>
+
+    <section id="tab-help" class="tab hidden">
+      <div class="card" id="help"></div>
+    </section>
+  </main>
+</div>
+
+<div id="modal" class="modal hidden"><div class="modal-box card"><button class="btn icon close" id="modal-close">✕</button><div id="modal-body"></div></div></div>
+<div id="toasts"></div>
+<script src="/panel/app.js"></script>
+</body>
+</html>

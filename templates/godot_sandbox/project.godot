@@ -1,0 +1,13 @@
+; Engine configuration file.
+; Default sandbox project used when the game has no project.godot yet.
+
+config_version=5
+
+[application]
+
+config/name="MultiConnect Sandbox"
+config/features=PackedStringArray("4.3")
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
