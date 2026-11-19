@@ -10,7 +10,8 @@
 
 ## Najkrótsza ścieżka (dziś wieczorem)
 
-1. `github_setup.bat` → loguje do GitHuba, robi pierwszy commit, tworzy **prywatne** repo i wypycha kod.
+1. `github_setup.bat` → loguje do GitHuba, robi pierwszy commit, tworzy repo i wypycha kod
+   (zrobione: publiczne repo https://github.com/panPianka/multiconnect, licencja GPL-3.0-or-later).
 2. GitHub → repo → **Settings → Collaborators** → dodaj osoby z zespołu.
 3. `make_offline_bundle.bat` (jeśli jeszcze nie) → `make_release.bat --publish` → release z zipami.
 4. Pendrive: `make_release.bat --pendrive` → `dist\multiconnect-v0.1.0-offline.zip` na pendrive.

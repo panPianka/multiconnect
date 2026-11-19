@@ -1,6 +1,8 @@
 # 1. Projekt na GitHubie
 
-Repo ma być **prywatne**: w kodzie nie ma haseł, ale to nasze narzędzie na hackathon.
+Repo jest **publiczne** (https://github.com/panPianka/multiconnect), licencja **GPL-3.0-or-later** (`LICENSE`).
+Każdy widzi kod i releasy, ale pushować mogą tylko collaboratorzy. W kodzie nie ma haseł –
+dlatego tabela niżej jest jeszcze ważniejsza: wszystko, co trafi na GitHuba, jest od razu widoczne dla świata.
 
 ## Co trafia do repo, a co nigdy
 
@@ -30,7 +32,11 @@ Działa bez admina. Po kolei:
 4. robi pierwszy commit na gałęzi `main` (pokazuje listę plików – sprawdź ją!);
 5. tworzy prywatne repo `multiconnect` (inna nazwa: `github_setup.bat moja-nazwa`) i wypycha kod.
 
-Na końcu wypisuje adres repo.
+Na końcu wypisuje adres repo. Upublicznienie (zrobione dla naszego repo):
+```bash
+gh repo edit --visibility public --accept-visibility-change-consequences
+```
+albo GitHub → repo → **Settings → General → Danger Zone → Change visibility**.
 
 ## Sposób B – ręcznie (gdy skrypt nie działa)
 

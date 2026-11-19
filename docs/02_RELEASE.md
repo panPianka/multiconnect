@@ -57,7 +57,7 @@ Na docelowym PC:
 
 Repo → **Releases** → najnowsza wersja → pobierz zip → rozpakuj np. do `D:\multiconnect`
 (nie do `Program Files` – tam nie ma prawa zapisu bez admina) → `setup.bat` → `selftest.bat`.
-Repo jest prywatne, więc trzeba być zalogowanym na GitHubie i dodanym jako collaborator.
+Repo jest publiczne, więc pobrać może każdy, bez logowania (https://github.com/panPianka/multiconnect/releases).
 
 ## Poprawka w trakcie hackathonu
 

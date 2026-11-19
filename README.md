@@ -101,3 +101,12 @@ zaloguj mocki (przycisk „Log in” na stronie mocka) i każ Claude coś zleci�
   przenosi dowódcę (RUNBOOK F.6). Zawiera ciasteczka, więc tylko na naszych PC.
 - Sieć nie działa? `netcheck.bat`, `tunnel.bat` (tunel przez internet), `solo.bat` (wszystko na jednym PC).
 - `_hive/HANDOFF.md` w folderze gry pozwala innemu Claude / Codexowi przejąć dowodzenie w każdej chwili.
+
+## Licencja
+
+MultiConnect jest udostępniany na licencji **GNU GPL v3.0 lub nowszej** (`GPL-3.0-or-later`) – pełny tekst w [LICENSE](LICENSE).
+Możesz używać, zmieniać i rozpowszechniać kod, ale rozpowszechniane wersje (także zmienione) muszą mieć otwarty
+kod na tej samej licencji. Zip offline zawiera też narzędzia innych autorów na ich własnych licencjach
+(Python, Chromium/Playwright, Godot, uv, cloudflared).
+
+MultiConnect is licensed under the **GNU General Public License v3.0 or later** – see [LICENSE](LICENSE).
